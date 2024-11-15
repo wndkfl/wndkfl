@@ -1,0 +1,9 @@
+#include <stdio.h>
+#define print(a,b) printf("a*b = %3d\n",a*b);
+
+int main(void)
+{
+    int a=7, b=2;
+    print(a,b)
+    return 0;
+}
