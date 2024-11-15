@@ -1,0 +1,17 @@
+#include <stdio.h>
+int main(void)
+{
+    int i = 15, num=5;
+    
+   
+    for(i =15; i >= 0; --i)
+    {
+        printf("%d",(num>>i)&1);
+
+        if(i>0&&i%8==0){
+            printf("");
+        }
+    }
+    printf("\n");
+    return 0;
+}
