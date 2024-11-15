@@ -1,0 +1,21 @@
+package ddd;
+
+class A{}
+class B extends A{}
+class C extends B{}
+
+
+public class d {
+	public static void main(String args[]) {
+		B ob = new B();
+	    if (ob instanceof B) System.out.println("B의 객체");
+	    if (ob instanceof C) System.out.println("C의 객체");
+	    if (ob instanceof A) System.out.println("A의 객체");
+	    A oa = new A();
+	    if (oa instanceof A) System.out.println("A의 객체");
+	    if (oa instanceof B) System.out.println("B의 객체");
+	    if (oa instanceof C) System.out.println("C의 객체");
+	    
+	}
+
+}
