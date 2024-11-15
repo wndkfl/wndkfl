@@ -1,0 +1,21 @@
+#include <stdio.h>
+#include <string.h>
+
+struct person {
+    int age;
+    char name[10];
+};
+
+typedef struct person person;
+
+int main() {
+    person kim;
+    kim.age = 21;
+    strcpy(kim.name, "ju");
+
+    person *kim_point = &kim;
+
+    printf("age: %d, name: %s\n", kim_point->age, kim_point->name);
+
+    return 0;
+}
