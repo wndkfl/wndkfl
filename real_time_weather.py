@@ -1,5 +1,3 @@
-# real_time_weather.py
-
 import requests
 
 class RealTimeWeather:
@@ -26,6 +24,7 @@ class RealTimeWeather:
             temp = weather_data['main']['temp']
             humidity = weather_data['main']['humidity']
             description = weather_data['weather'][0]['description']
-            return temp, humidity, description
+            rain = weather_data.get('rain', {}).get('1h', 0.0)
+            return temp, humidity, description, rain
         else:
-            return None, None, None
+            return None, None, None, None

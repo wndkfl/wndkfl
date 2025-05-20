@@ -1,5 +1,3 @@
-# crop_advisory.py
-
 class CropAdvisory:
     def __init__(self):
         self.crop_guidelines = {
