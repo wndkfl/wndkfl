@@ -1,0 +1,5 @@
+df["Collision Type"].value_counts().nlargest(10).plot(kind="barh")
+plt.title("상위 충돌 유형 (Top 10)")
+plt.xlabel("사고 건수")
+plt.tight_layout()
+plt.show()
