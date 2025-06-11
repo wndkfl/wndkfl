@@ -1,0 +1,35 @@
+import seaborn as sns
+import matplotlib.pyplot as plt
+
+# 대문자 통일 + 앞뒤 공백 제거
+df["Weather"] = df["Weather"].str.upper().str.strip()
+
+# 유사 항목 병합
+df["Weather"] = df["Weather"].replace({
+    "RAINING": "RAIN",
+    "SHOWERS": "RAIN",
+    "FOG": "FOGGY",
+    "CLEAR/NO CONDITION": "CLEAR"
+})
+
+# 지정된 값 외에는 'UNKNOWN' 처리
+valid_weather = [
+    "CLEAR", "RAIN", "CLOUDY", "SNOW", "FOGGY", "WINTRY MIX", "SEVERE WINDS", "OTHER"
+]
+df["Weather"] = df["Weather"].apply(lambda w: w if w in valid_weather else "UNKNOWN")
+
+# 상위 10개 날씨 조건 선택
+top_weather = df["Weather"].value_counts().nlargest(10).index
+
+# 시각화 (기본 스타일, 컬러지정 없음)
+plt.figure(figsize=(8, 6))
+sns.countplot(
+    y="Weather",
+    data=df[df["Weather"].isin(top_weather)],
+    order=top_weather
+)
+plt.title("날씨 조건별 사고 건수 (Top 10)")
+plt.xlabel("사고 건수")
+plt.ylabel("날씨")
+plt.tight_layout()
+plt.show()
