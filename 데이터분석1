@@ -1,0 +1,22 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# 요일 추출
+df["Weekday"] = df["Crash Date/Time"].dt.day_name()
+
+# 요일별 사고 건수 집계
+weekday_counts = df["Weekday"].value_counts()
+
+# 요일 순서 정렬
+weekday_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+weekday_counts = weekday_counts.reindex(weekday_order)
+
+# 선 그래프 시각화
+plt.figure(figsize=(8, 4))
+plt.plot(weekday_counts.index, weekday_counts.values, marker='o', linestyle='-')
+plt.title("요일별 교통사고 발생 추이")
+plt.xlabel("요일")
+plt.ylabel("사고 건수")
+plt.grid(True)
+plt.tight_layout()
+plt.show()
