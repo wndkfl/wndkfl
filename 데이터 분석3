@@ -1,0 +1,4 @@
+sns.boxplot(x="Driver At Fault", y="Speed Limit", data=df)
+plt.title("사고 책임 여부에 따른 제한속도 분포")
+plt.tight_layout()
+plt.show()
