@@ -1,0 +1,6 @@
+# Driver At Fault 컬럼 정제 (대문자, 공백제거, 유효값 필터링)
+df["Driver At Fault"] = df["Driver At Fault"].astype(str).str.strip().str.upper()
+df.loc[~df["Driver At Fault"].isin(["YES", "NO"]), "Driver At Fault"] = pd.NA
+sns.countplot(x="Driver At Fault", data=df)
+plt.title("사고 책임 유무 분포")
+plt.show()
